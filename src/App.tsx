@@ -1,10 +1,29 @@
+import 'react-calendar-heatmap/dist/styles.css';
+
 import React from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+
+import Header from './components/Header';
+import Profile from './pages/Profile';
+import Repo from './pages/Repo';
+
+import GlobalStyles from './styles/GlobalStyles';
 
 function App() {
   return (
-    <div className="App">
-      <h1>UIClone</h1>
-    </div>
+    <BrowserRouter>
+      <Header />
+
+      <Routes>
+        <Route path="/" element={<Profile />} />
+        <Route path="/:username" element={<Profile />} />
+        <Route path="/:username/:reponame" element={<Repo />} />
+      </Routes>
+
+      <GlobalStyles />
+
+      {/* <Footer /> */}
+    </BrowserRouter>
   );
 }
 
